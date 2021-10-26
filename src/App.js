@@ -124,7 +124,7 @@ function App() {
           <button onClick={() => {
             const num = Math.floor(Math.random() * categories[selected].length);
             setChosen(categories[selected][num]);
-          }}>Click here to generate a new suggestion!</button>
+          }}>New {selected} Suggestion</button>
           <button onClick={() => {
             setChosen(null);
             setSelected(null);
