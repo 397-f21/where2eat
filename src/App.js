@@ -7,9 +7,6 @@ import { data } from "./data";
 
 function App() {
 
-  const API_KEY = "LL7utKGyZOsd7g1xdwfMyFEh80UCmesfPzQ5pfd6VeBexSbUbyRkBuGswVcMsqPFxNGYe7u63HIQWwpoKZuJFWM759wh6RwZZLLZYGEMbFyesMJrugHWrH4_YDdwYXYx";
-  console.log(API_KEY);
-
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState(null);
   const [unavailable, setUnavailable] = useState(false);
@@ -42,9 +39,7 @@ function App() {
           headers: {
             'Content-Type': 'application/json'
           },
-          // headers: {'Content-Type': 'application/graphql', 'Authorization': `Bearer ${API_KEY}`, 'Origin': '', 'Accept-Language': 'en_US'},
           body: JSON.stringify(payload)
-          // mode: 'no-cors'
         }
 
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
@@ -116,7 +111,6 @@ function App() {
         <div>
           <h1>Where2Eat</h1>
           {Object.keys(categories).map((category) => {
-            // console.log(category);
             return (
               <button
                 key={category}
