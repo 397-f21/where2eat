@@ -26,52 +26,34 @@ function App() {
     const getGeoLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pullData);
-      } 
+      }
       else {
         setUnavailable(true);
       }
     }
 
     const pullData = async (position) => {
-      const payload = `{
-        search(term:"restaurant",
-          latitude:${position.coords.latitude},
-          longitude:${position.coords.longitude},
-               radius:1609) {
-          total
-          business {
-            url
-            name
-            location {
-                address1
-            }
-            categories {
-                title
-            }
-            reviews {
-              text
-              rating
-              time_created
-              url
-            }
-          }
-        }
-      }`;
+      console.log(position.coords.longitude);
+      const payload = { "latitude": position.coords.latitude, "longitude": position.coords.longitude };
       try {
 
         const requestOptions = {
           method: 'POST',
-          headers: {'Content-Type': 'application/graphql', 'Authorization': `Bearer ${API_KEY}`, 'Origin': '', 'Accept-Language': 'en_US'},
-          body: payload
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          // headers: {'Content-Type': 'application/graphql', 'Authorization': `Bearer ${API_KEY}`, 'Origin': '', 'Accept-Language': 'en_US'},
+          body: JSON.stringify(payload)
+          // mode: 'no-cors'
         }
 
-        fetch("https://cors-anywhere.herokuapp.com/"+url, requestOptions)
-        .then(response => response.json())
-        .then(data => {
-          setApiData(data);
-          setLoading(false);
-          console.log("Api data", data);
-        });
+        fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
+          .then(response => response.json())
+          .then(data => {
+            console.log("Api data", data);
+            setApiData(data);
+            setLoading(false);
+          });
 
         // const response = await axios.post("https://cors-anywhere.herokuapp.com/"+url, {
         //   headers: {
