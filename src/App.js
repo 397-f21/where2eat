@@ -111,19 +111,22 @@ function App() {
         </div>
         :
         <div>
+
           <Banner />
-          {Object.keys(categories).map((category) => {
-            return (
-              <button
-                key={category}
-                onClick={() => {
-                  const num = Math.floor(Math.random() * categories[category].length);
-                  setChosen(categories[category][num]);
-                  setSelected(category);
-                }}
-              >{category}</button>
-            )
-          })}
+          <div className="selectors">
+            {Object.keys(categories).map((category) => {
+              return (
+                <button className="select-btn"
+                  key={category}
+                  onClick={() => {
+                    const num = Math.floor(Math.random() * categories[category].length);
+                    setChosen(categories[category][num]);
+                    setSelected(category);
+                  }}
+                >{category}</button>
+              )
+            })}
+          </div>
         </div>}
 
     </div>
