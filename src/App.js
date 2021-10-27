@@ -86,7 +86,6 @@ function App() {
       <Banner />
       {selected ?
         <div>
-          <Banner />
           <div className="restaurant">
             <h1 className="category">{selected}</h1>
             <h2 className="name">{chosen.name}</h2>
@@ -107,8 +106,6 @@ function App() {
         </div>
         :
         <div>
-
-          
           <div className="selectors">
             {Object.keys(categories).map((category) => {
               return (
