@@ -1,0 +1,64 @@
+.restaurant {
+  background-color: rgb(230, 236, 223);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .category {
+    font-size: 40px;
+} */
+
+.name {
+    font-size: 42px;
+}
+
+.address:link {
+    text-decoration: none;
+    color: black;
+}
+
+.yelp:link {
+    text-decoration: none;
+    color: black;
+}
+
+.address {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+.yelp {  
+    margin-bottom: 40px;
+    font-size:20px;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+  height: 50px;
+  background-color: #f36969e3;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border: 0.1em solid #ffffff;
+  margin: 0 0.3em 0.3em 0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
