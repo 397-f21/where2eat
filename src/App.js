@@ -53,21 +53,6 @@ function App() {
             setLoading(false);
           });
 
-        // const response = await axios.post("https://cors-anywhere.herokuapp.com/"+url, {
-        //   headers: {
-        //     'Authorization': `Bearer ${API_KEY}`,
-        //     'Content-Type': 'application/graphql',
-        //   },
-        //   withCredentials: true,
-        //   body: payload
-        // });
-
-        // const jsonData = response.data.json();
-        // setLoading(false);
-        // setApiData(jsonData);
-
-        // console.log(jsonData); // Remeber to remove me
-
       } catch (error) {
         setErrorMsg(error.message);
       }
