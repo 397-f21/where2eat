@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import env from 'react-dotenv';
 import axios from "axios";
 import { data } from "./data";
+import Banner from './components/Banner';
 
 function App() {
 
@@ -94,6 +95,7 @@ function App() {
     <div className="App">
       {selected ?
         <div>
+          <Banner />
           <h1>{selected}</h1>
           <h2>{chosen.name}</h2>
           <p>{chosen.location.address1}</p>
@@ -109,7 +111,7 @@ function App() {
         </div>
         :
         <div>
-          <h1>Where2Eat</h1>
+          <Banner />
           {Object.keys(categories).map((category) => {
             return (
               <button
