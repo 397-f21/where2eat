@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+/* --- FOOD CATEGORIES STYLING --- */
+.select-btn {
+  width: 18%;
+  height: 15%;
+  color: white;
+  font-weight: bold;
+  background-color: #f5674e;
+  border: none;
+  border-radius: 10px;
+  margin: 12px 10px;
+}
+
+.selectors {
+  width: 90%;
+  height: 80vh;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .select-btn {
+    width: 85%;
+    padding: 10px 10px;
+    color: white;
+    background-color: #f5674e;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+
+  .selectors {
+    width: 90%;
+    height: 80vh;
+    overflow: hidden;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 10% auto;
+  }
+}
