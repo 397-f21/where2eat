@@ -36,7 +36,12 @@ function App() {
 
     const pullData = async (position) => {
       //console.log(position.coords.longitude);
-      const payload = { "latitude": position.coords.latitude, "longitude": position.coords.longitude };
+      const payload = { 
+        "latitude": position.coords.latitude, 
+        "longitude": position.coords.longitude,
+        "radius": 1609,
+        "attribute": "" };
+        
       try {
 
         const requestOptions = {
