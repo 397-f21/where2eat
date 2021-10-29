@@ -1,9 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
-import env from 'react-dotenv';
-import axios from "axios";
-import { data } from "./data";
 import Banner from './components/Banner';
 import "./restaurant.css";
 import MapIcon from './map-marked-alt-solid.svg';
@@ -87,7 +83,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App" data-testid="App">
       <Banner />
       {selected ?
 
