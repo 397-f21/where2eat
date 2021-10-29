@@ -69,6 +69,7 @@ function App() {
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
 
   let businesses = apiData.data.search.business;
+  console.log(businesses);
   let categories = {};
   for (let i = 0; i < businesses.length; i++) {
     let category = businesses[i].categories[0].title;
@@ -79,7 +80,12 @@ function App() {
     }
   }
 
-
+  var sorted_index = Object.keys(categories).sort();
+  var sorted_categories = {};
+  for (var i = 0; i < sorted_index.length; i++) {
+    sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
+  }
+  var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
   return (
     <div className="App">
@@ -92,10 +98,11 @@ function App() {
           <hr />
           <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
           <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
+          <p>Price: {price_level[chosen.price]}</p>
           <div className="btn-group">
             <button className="btn renew" onClick={() => {
-              const num = Math.floor(Math.random() * categories[selected].length);
-              setChosen(categories[selected][num]);
+              const num = Math.floor(Math.random() * sorted_categories[selected].length);
+              setChosen(sorted_categories[selected][num]);
             }}>New {selected} Suggestion</button>
             <button className="btn back" onClick={() => {
               setChosen(null);
@@ -106,15 +113,15 @@ function App() {
         :
         <div>
 
-          
+
           <div className="selectors">
-            {Object.keys(categories).map((category) => {
+            {Object.keys(sorted_categories).map((category) => {
               return (
                 <button className="select-btn"
                   key={category}
                   onClick={() => {
-                    const num = Math.floor(Math.random() * categories[category].length);
-                    setChosen(categories[category][num]);
+                    const num = Math.floor(Math.random() * sorted_categories[category].length);
+                    setChosen(sorted_categories[category][num]);
                     setSelected(category);
                   }}
                 >{category}</button>
