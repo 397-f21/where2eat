@@ -7,6 +7,7 @@ import { data } from "./data";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./restaurant.css";
+import Selectors from './components/Selectors'
 // import MapIcon from './map-marked-alt-solid.svg';
 // import YelpIcon from './yelp-svgrepo-com.svg';
 
@@ -37,12 +38,13 @@ function App() {
 
     const pullData = async (position) => {
       //console.log(position.coords.longitude);
-      const payload = { 
-        "latitude": position.coords.latitude, 
+      const payload = {
+        "latitude": position.coords.latitude,
         "longitude": position.coords.longitude,
         "radius": 1609,
-        "attribute": "" };
-        
+        "attribute": ""
+      };
+
       try {
 
         const requestOptions = {
@@ -94,30 +96,14 @@ function App() {
 
   return (
     <div data-testid='App' className="App">
-      <Banner data-testid='banner'/>
+      <Banner data-testid='banner' />
       {selected ?
 
         <Restaurant categories={sorted_categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
 
         :
-        <div>
-
-
-          <div className="selectors">
-            {Object.keys(sorted_categories).map((category) => {
-              return (
-                <button data-testid="selection-button" className="select-btn"
-                  key={category}
-                  onClick={() => {
-                    const num = Math.floor(Math.random() * sorted_categories[category].length);
-                    setChosen(sorted_categories[category][num]);
-                    setSelected(category);
-                  }}
-                >{category}</button>
-              )
-            })}
-          </div>
-        </div>}
+        <Selectors categories={sorted_categories} setChosen={setChosen} setSelected={setSelected} />
+      }
 
     </div>
   );
