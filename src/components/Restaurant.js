@@ -3,7 +3,6 @@ import YelpIcon from '../yelp-svgrepo-com.svg';
 
 const Restaurant = ({categories, chosen, setChosen, selected, setSelected}) => {
     return (
-        
         <div className="restaurant">
           <h1 className="category">{selected}</h1>
           <h2 className="name">{chosen.name}</h2>

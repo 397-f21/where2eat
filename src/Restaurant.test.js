@@ -1,6 +1,7 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor} from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
 import Restaurant from './components/Restaurant';
+import App from "./App";
 
 const chosenObject = {
     "rating": 4.5,
@@ -37,8 +38,9 @@ const chosenObject = {
     ]
 }
 
-test("blahblah", async () => {
-    render(<Restaurant categories={["American (New)"]} chosen={chosenObject} setChosen={()=>{return []}} selected={"American (New)"} setSelected={()=>{return []}}/>)
+test("Restaurant page should render category, name, yelp, map, back button, and generate new restaurant button", async () => {
+    render(<Restaurant categories={["American (New)"]} chosen={chosenObject} setChosen={()=>{}} selected={"American (New)"} setSelected={()=>{}}/>)
+    const btn = await screen.findByRole("button", {name:"Back"});
     expect(await screen.findByText(/Alcove Evanston/i)).toBeVisible();
     expect(await screen.findByText("American (New)")).toBeVisible();
     expect(await screen.findByText(/1625 Maple Ave/i)).toBeVisible();

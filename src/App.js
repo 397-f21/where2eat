@@ -1,14 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
-//import env from 'react-dotenv';
-import axios from "axios";
-import { data } from "./data";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./restaurant.css";
-// import MapIcon from './map-marked-alt-solid.svg';
-// import YelpIcon from './yelp-svgrepo-com.svg';
+
 
 
 function App() {
@@ -94,8 +90,6 @@ function App() {
         <Restaurant categories={categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
         :
         <div>
-
-          
           <div className="selectors">
             {Object.keys(categories).map((category) => {
               return (
