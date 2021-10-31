@@ -1,4 +1,4 @@
-const Selectors = ({ categories, chosen, setChosen, selected, setSelected }) => {
+const Selectors = ({ categories, setChosen, setSelected }) => {
     return (
         <div>
             <div className="selectors">

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor} from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Restaurant from './components/Restaurant';
 
 const chosenObject = {
@@ -38,11 +38,11 @@ const chosenObject = {
 }
 
 test("blahblah", async () => {
-    render(<Restaurant categories={["American (New)"]} chosen={chosenObject} setChosen={()=>{return []}} selected={"American (New)"} setSelected={()=>{return []}}/>)
+    render(<Restaurant categories={["American (New)"]} chosen={chosenObject} setChosen={() => { return [] }} selected={"American (New)"} setSelected={() => { return [] }} />)
     expect(await screen.findByText(/Alcove Evanston/i)).toBeVisible();
     expect(await screen.findByText("American (New)")).toBeVisible();
     expect(await screen.findByText(/1625 Maple Ave/i)).toBeVisible();
     expect(await screen.findByText("View on Yelp")).toBeVisible();
-    expect(await screen.findByRole("button", {name:"Back"})).toBeVisible();
-    expect(await screen.findByRole("button", {name:/Suggestion/i})).toBeVisible();
+    expect(await screen.findByRole("button", { name: "Back" })).toBeVisible();
+    expect(await screen.findByRole("button", { name: /Suggestion/i })).toBeVisible();
 })

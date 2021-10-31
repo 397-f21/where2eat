@@ -93,7 +93,7 @@ function App() {
   for (var i = 0; i < sorted_index.length; i++) {
     sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
   }
-
+  console.log(sorted_categories)
   return (
     <div data-testid='App' className="App">
       <Banner data-testid='banner' />
