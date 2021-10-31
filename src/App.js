@@ -91,7 +91,6 @@ function App() {
   for (var i = 0; i < sorted_index.length; i++) {
     sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
   }
-  var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
   return (
     <div data-testid='App' className="App">
