@@ -75,6 +75,7 @@ function App() {
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
 
   let businesses = apiData.data.search.business;
+  console.log(businesses);
   let categories = {};
   for (let i = 0; i < businesses.length; i++) {
     let category = businesses[i].categories[0].title;
@@ -85,25 +86,32 @@ function App() {
     }
   }
 
-
+  var sorted_index = Object.keys(categories).sort();
+  var sorted_categories = {};
+  for (var i = 0; i < sorted_index.length; i++) {
+    sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
+  }
+  var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
   return (
     <div data-testid='App' className="App">
       <Banner data-testid='banner'/>
       {selected ?
-        <Restaurant categories={categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
+
+        <Restaurant categories={sorted_categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
+
         :
         <div>
 
-          
+
           <div className="selectors">
-            {Object.keys(categories).map((category) => {
+            {Object.keys(sorted_categories).map((category) => {
               return (
                 <button data-testid="selection-button" className="select-btn"
                   key={category}
                   onClick={() => {
-                    const num = Math.floor(Math.random() * categories[category].length);
-                    setChosen(categories[category][num]);
+                    const num = Math.floor(Math.random() * sorted_categories[category].length);
+                    setChosen(sorted_categories[category][num]);
                     setSelected(category);
                   }}
                 >{category}</button>
