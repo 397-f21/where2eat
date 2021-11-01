@@ -1,5 +1,6 @@
 import React from "react";
-import { render, screen, fireEvent, waitFor, waitForElementToBeRemoved} from '@testing-library/react';
+
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Restaurant from './components/Restaurant';
 import App from "./App";
 
@@ -103,3 +104,4 @@ test("Generate new restaurant button should select a new restaurant", async() =>
     expect(await screen.findByText(/1936 Maple Ave/i)).toBeVisible();
 
 })
+

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./restaurant.css";
+import Selectors from './components/Selectors'
 
 
 
@@ -32,12 +33,13 @@ function App() {
 
     const pullData = async (position) => {
       //console.log(position.coords.longitude);
-      const payload = { 
-        "latitude": position.coords.latitude, 
+      const payload = {
+        "latitude": position.coords.latitude,
         "longitude": position.coords.longitude,
         "radius": 1609,
-        "attribute": "" };
-        
+        "attribute": ""
+      };
+
       try {
 
         const requestOptions = {
@@ -86,31 +88,17 @@ function App() {
   for (var i = 0; i < sorted_index.length; i++) {
     sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
   }
-  var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
-
+  console.log(sorted_categories)
   return (
     <div data-testid='App' className="App">
-      <Banner data-testid='banner'/>
+      <Banner data-testid='banner' />
       {selected ?
 
         <Restaurant categories={sorted_categories} selected={selected} setSelected={setSelected} />
 
         :
-        <div>
-
-          <div className="selectors">
-            {Object.keys(sorted_categories).map((category) => {
-              return (
-                <button data-testid="selection-button" className="select-btn"
-                  key={category}
-                  onClick={() => {
-                    setSelected(category);
-                  }}
-                >{category}</button>
-              )
-            })}
-          </div>
-        </div>}
+        <Selectors categories={sorted_categories} setSelected={setSelected} />
+      }
 
     </div>
   );
