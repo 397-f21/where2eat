@@ -10,7 +10,8 @@ const Banner = () => {
                     <li>
                         <img
                             src={logo}
-                            alt="Logo"
+                            aria-label="logo"
+                            alt="logo"
                             data-testid="logo"
                         />
                     </li>
