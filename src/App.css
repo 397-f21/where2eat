@@ -50,6 +50,11 @@
   margin: 12px 10px;
 }
 
+.select-btn:hover{
+    color: #ffffff;
+    background-color: #E23636;
+}
+
 .selectors {
   width: 90%;
   height: 80vh;
