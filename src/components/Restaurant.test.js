@@ -1,8 +1,8 @@
 import React from "react";
 
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import Restaurant from './components/Restaurant';
-import App from "./App";
+import Restaurant from './Restaurant';
+import App from "../App";
 
 const chosenObject = {
     "rating": 4.5,

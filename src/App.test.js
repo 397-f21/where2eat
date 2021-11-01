@@ -5,4 +5,5 @@ import App from './App';
 test('renders App with the banner', async () => {
   render(<App/>);
   expect(await screen.getByTestId("banner")).toBeVisible();
+  expect(await screen.getByText("Loading the data...")).toBeVisible();
 });
