@@ -11,9 +11,10 @@ const Banner = () => {
                         <img
                             src={logo}
                             alt="Logo"
+                            data-testid="logo"
                         />
                     </li>
-                    <li className="topic">
+                    <li className="topic" data-testid="topic">
                         <span>Find Your Meal!</span>
                     </li>
                 </ul>
