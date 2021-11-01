@@ -13,7 +13,6 @@ function App() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [unavailable, setUnavailable] = useState(false);
   const [selected, setSelected] = useState(null);
-  const [chosen, setChosen] = useState(null);
   const [apiData, setApiData] = useState(null);
   const url = 'https://api.yelp.com/v3/graphql';
 
@@ -94,11 +93,10 @@ function App() {
       <Banner data-testid='banner'/>
       {selected ?
 
-        <Restaurant categories={sorted_categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
+        <Restaurant categories={sorted_categories} selected={selected} setSelected={setSelected} />
 
         :
         <div>
-
 
           <div className="selectors">
             {Object.keys(sorted_categories).map((category) => {
@@ -106,8 +104,6 @@ function App() {
                 <button data-testid="selection-button" className="select-btn"
                   key={category}
                   onClick={() => {
-                    const num = Math.floor(Math.random() * sorted_categories[category].length);
-                    setChosen(sorted_categories[category][num]);
                     setSelected(category);
                   }}
                 >{category}</button>
