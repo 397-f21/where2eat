@@ -2,11 +2,8 @@ import './App.css';
 import { useState, useEffect } from "react";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
-import "./restaurant.css";
-
+import "./components/restaurant.css";
 import Selectors from './components/Selectors'
-
-
 
 function App() {
 
@@ -15,6 +12,8 @@ function App() {
   const [unavailable, setUnavailable] = useState(false);
   const [selected, setSelected] = useState(null);
   const [apiData, setApiData] = useState(null);
+  //const [categories, setCategories] = useState(null);
+  const [filteredCategories, setFilteredCategories] = useState(null);
 
   useEffect(async () => {
 
@@ -48,8 +47,26 @@ function App() {
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
           .then(response => response.json())
           .then(data => {
-            console.log("Api data", data);
-            setApiData(data);
+            
+            let businesses = data.data.search.business;
+            let newCategories = {};
+            for (let i = 0; i < businesses.length; i++) {
+              let category = businesses[i].categories[0].title;
+              if (category in newCategories) {
+                newCategories[category].push(businesses[i]);
+              } else {
+                newCategories[category] = [businesses[i]];
+              }
+            }
+
+            var sorted_index = Object.keys(newCategories).sort();
+            var sorted_categories = {};
+            for (var i = 0; i < sorted_index.length; i++) {
+              sorted_categories[sorted_index[i]] = newCategories[[sorted_index[i]]];
+            }
+            //setCategories(sorted_categories);
+            setFilteredCategories(sorted_categories);
+            setApiData(sorted_categories);
             setLoading(false);
           });
 
@@ -59,7 +76,7 @@ function App() {
     };
 
     getGeoLocation();
-
+    
   }, [])
 
   if (loading) { 
@@ -72,35 +89,18 @@ function App() {
   }
   if (errorMsg) return <h1>errorMsg</h1>;
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
+  
 
-  let businesses = apiData.data.search.business;
-  console.log(businesses);
-  let categories = {};
-  for (let i = 0; i < businesses.length; i++) {
-    let category = businesses[i].categories[0].title;
-    if (category in categories) {
-      categories[category].push(businesses[i]);
-    } else {
-      categories[category] = [businesses[i]];
-    }
-  }
-
-
-  var sorted_index = Object.keys(categories).sort();
-  var sorted_categories = {};
-  for (var i = 0; i < sorted_index.length; i++) {
-    sorted_categories[sorted_index[i]] = categories[[sorted_index[i]]];
-  }
-  console.log(sorted_categories)
   return (
     <div data-testid='App' className="App">
       <Banner data-testid='banner' />
       {selected ?
 
-        <Restaurant categories={sorted_categories} selected={selected} setSelected={setSelected} />
+        <Restaurant categories={filteredCategories} selected={selected} setSelected={setSelected} />
 
         :
-        <Selectors categories={sorted_categories} setSelected={setSelected} />
+
+        <Selectors categories={apiData} setSelected={setSelected} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
       }
 
     </div>
