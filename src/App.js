@@ -4,6 +4,7 @@ import Banner from './components/Banner';
 import "./restaurant.css";
 import MapIcon from './map-marked-alt-solid.svg';
 import YelpIcon from './yelp-svgrepo-com.svg';
+import Homepage from './components/Homepage';
 
 
 function App() {
@@ -65,7 +66,14 @@ function App() {
 
   }, [])
 
-  if (loading) return <h1>Loading the data...</h1>;
+  if (loading) { 
+    return (
+      <>
+        <Banner />
+        <h1>Loading the data...</h1>
+      </>
+    )
+  }
   if (errorMsg) return <h1>errorMsg</h1>;
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
 
@@ -80,10 +88,10 @@ function App() {
     }
   }
 
-
+  console.log(categories);
 
   return (
-    <div className="App" data-testid="App">
+    <div className="App">
       <Banner />
       {selected ?
 
@@ -105,25 +113,7 @@ function App() {
           </div>
         </div>
         :
-        <div>
-
-          
-          <div className="selectors">
-            {Object.keys(categories).map((category) => {
-              return (
-                <button className="select-btn"
-                  key={category}
-                  onClick={() => {
-                    const num = Math.floor(Math.random() * categories[category].length);
-                    setChosen(categories[category][num]);
-                    setSelected(category);
-                  }}
-                >{category}</button>
-              )
-            })}
-          </div>
-        </div>}
-
+        <Homepage categories={categories} setChosen={setChosen} setSelected={setSelected}/>}
     </div>
   );
 }
