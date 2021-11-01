@@ -1,4 +1,4 @@
-const Selectors = ({ categories, setChosen, setSelected }) => {
+const Selectors = ({ categories, setSelected }) => {
     return (
         <div>
             <div className="selectors">
@@ -8,7 +8,6 @@ const Selectors = ({ categories, setChosen, setSelected }) => {
                             key={category}
                             onClick={() => {
                                 const num = Math.floor(Math.random() * categories[category].length);
-                                setChosen(categories[category][num]);
                                 setSelected(category);
                             }}
                         >{category}</button>

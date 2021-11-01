@@ -1,15 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
-//import env from 'react-dotenv';
-import axios from "axios";
-import { data } from "./data";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./restaurant.css";
 import Selectors from './components/Selectors'
-// import MapIcon from './map-marked-alt-solid.svg';
-// import YelpIcon from './yelp-svgrepo-com.svg';
+
 
 
 function App() {
@@ -18,7 +14,6 @@ function App() {
   const [errorMsg, setErrorMsg] = useState(null);
   const [unavailable, setUnavailable] = useState(false);
   const [selected, setSelected] = useState(null);
-  const [chosen, setChosen] = useState(null);
   const [apiData, setApiData] = useState(null);
   const url = 'https://api.yelp.com/v3/graphql';
 
@@ -99,10 +94,10 @@ function App() {
       <Banner data-testid='banner' />
       {selected ?
 
-        <Restaurant categories={sorted_categories} chosen={chosen} setChosen={setChosen} selected={selected} setSelected={setSelected} />
+        <Restaurant categories={sorted_categories} selected={selected} setSelected={setSelected} />
 
         :
-        <Selectors categories={sorted_categories} setChosen={setChosen} setSelected={setSelected} />
+        <Selectors categories={sorted_categories} setSelected={setSelected} />
       }
 
     </div>
