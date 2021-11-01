@@ -5,10 +5,7 @@ import { useState } from "react";
 const Restaurant = ({ categories, selected, setSelected }) => {
   const [index, setIndex] = useState(0);
   const [chosen, setChosen] = useState(categories[selected][0]);
-
-  // console.log("Index", index);
-  // console.log("Categories", categories[selected]);
-  // console.log("Chosen", chosen);
+  
   var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
   return (

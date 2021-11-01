@@ -5,7 +5,7 @@ import './Banner.css'
 const Banner = () => {
     return (
         <>
-            <div className="banner">
+            <div className="banner" data-testid="banner">
                 <ul>
                     <li>
                         <img

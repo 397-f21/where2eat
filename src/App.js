@@ -1,9 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect } from "react";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./restaurant.css";
+
 import Selectors from './components/Selectors'
 
 
@@ -15,10 +15,6 @@ function App() {
   const [unavailable, setUnavailable] = useState(false);
   const [selected, setSelected] = useState(null);
   const [apiData, setApiData] = useState(null);
-  const url = 'https://api.yelp.com/v3/graphql';
-
-
-  // append this before url, no spaces: https://cors-anywhere.herokuapp.com/
 
   useEffect(async () => {
 
@@ -32,7 +28,6 @@ function App() {
     }
 
     const pullData = async (position) => {
-      //console.log(position.coords.longitude);
       const payload = {
         "latitude": position.coords.latitude,
         "longitude": position.coords.longitude,
@@ -67,7 +62,14 @@ function App() {
 
   }, [])
 
-  if (loading) return <h1>Loading the data...</h1>;
+  if (loading) { 
+    return (
+      <>
+        <Banner />
+        <h1>Loading the data...</h1>
+      </>
+    )
+  }
   if (errorMsg) return <h1>errorMsg</h1>;
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
 
@@ -82,6 +84,7 @@ function App() {
       categories[category] = [businesses[i]];
     }
   }
+
 
   var sorted_index = Object.keys(categories).sort();
   var sorted_categories = {};
