@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from '@testing-library/react';
-import Homepage from "./Homepage";
+import Selectors from "./Selectors";
 
 const mock_categories = {
     "Chicken Shop": [
@@ -798,7 +798,7 @@ const mock_categories = {
 }
 
 test('renders homepage with buttons', async () => {
-  render(<Homepage categories={mock_categories} setChosen={() => {}} setSelected={() => {}}/>);
+  render(<Selectors categories={mock_categories} setSelected={() => {}}/>);
   expect(await screen.getByTestId("homepage")).toBeVisible();
   Object.keys(mock_categories).forEach(async (category) => {
       expect(await screen.getByText(category)).toBeVisible();
