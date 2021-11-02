@@ -59,14 +59,14 @@ function App() {
               }
             }
 
-            var sorted_index = Object.keys(newCategories).sort();
-            var sorted_categories = {};
-            for (var i = 0; i < sorted_index.length; i++) {
-              sorted_categories[sorted_index[i]] = newCategories[[sorted_index[i]]];
-            }
+            // var sorted_index = Object.keys(newCategories).sort();
+            // var sorted_categories = {};
+            // for (var i = 0; i < sorted_index.length; i++) {
+            //   sorted_categories[sorted_index[i]] = newCategories[[sorted_index[i]]];
+            // }
             //setCategories(sorted_categories);
-            setFilteredCategories(sorted_categories);
-            setApiData(sorted_categories);
+            setFilteredCategories(newCategories);
+            setApiData(newCategories);
             setLoading(false);
           });
 
