@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "./price.css"
 
-const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCategories }) => {
+const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCategories, currDistance, setCurrDistance }) => {
     const [currPrice, setCurrPrice] = useState(0);
+
     const priceButtonClick = (price) => {
+        if (currPrice === price.length) {
+            setCurrPrice(0);
+            setFilteredCategories(categories);
+            return;
+        }
+        setCurrPrice(price.length);
         const newCategories = {}
         for (let key in categories) {
             for (let restaurant of categories[key]) {
@@ -16,13 +23,7 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
                 }
             }
         };
-        // var sorted_index = Object.keys(newCategories).sort();
-        // var sorted_categories = {};
-        // for (var i = 0; i < sorted_index.length; i++) {
-        //     sorted_categories[sorted_index[i]] = newCategories[[sorted_index[i]]];
-        // }
-        // console.log(sorted_categories);
-        setFilteredCategories(newCategories);
+        setFilteredCategories(newCategories); 
     };
 
     var sorted_index = Object.keys(filteredCategories).sort();
@@ -32,23 +33,18 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
     }
 
     return (
-        <div className="price-filters">
-            <button className={currPrice === 1 ? "selected-price-btn" : "price-btn"} onClick={() => {
-                priceButtonClick("$");
-                setCurrPrice(1);
-            }}>$</button>
-            <button className={currPrice === 2 ? "selected-price-btn" : "price-btn"} onClick={() => {
-                priceButtonClick("$$");
-                setCurrPrice(2);
-            }}>$$</button>
-            <button className={currPrice === 3 ? "selected-price-btn" : "price-btn"} onClick={() => {
-                priceButtonClick("$$$");
-                setCurrPrice(3);
-            }}>$$$</button>
-            <button className={currPrice === 4 ? "selected-price-btn" : "price-btn"} onClick={() => {
-                priceButtonClick("$$$$");
-                setCurrPrice(4);
-            }}>$$$$</button>
+        <div>
+            <div id="distanceButtons">
+                <button className={currDistance === 0.5 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(0.5)}>0.5 Miles</button>
+                <button className={currDistance === 1 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(1)}>1 Mile</button>
+                <button className={currDistance === 3 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(3)}>3 Miles</button>
+            </div>
+            <div id="priceButtons">
+                <button className={currPrice === 1 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$")}>$</button>
+                <button className={currPrice === 2 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$$")}>$$</button>
+                <button className={currPrice === 3 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$$$")}>$$$</button>
+                <button className={currPrice === 4 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$$$$")}>$$$$</button>
+            </div>
             <div className="selectors" data-testid="homepage">
                 {Object.keys(sorted_categories).map((category) => {
                     return (
