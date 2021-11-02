@@ -17,17 +17,17 @@ const Restaurant = ({ categories, selected, setSelected }) => {
   while (step < 5) {
     if (ratings >= 1) {
       // full star
-      stars.push(<BsStarFill />);
+      stars.push(<BsStarFill key={step} />);
       ratings--;
       step++;
     } else if (ratings < 1 && ratings > 0) {
       // half star
-      stars.push(<BsStarHalf />);
+      stars.push(<BsStarHalf key={step}/>);
       ratings--;
       step++;
     } else {
       // empty star
-      stars.push(<BsStar />);
+      stars.push(<BsStar key={step}/>);
       step++;
     }
   }
@@ -45,8 +45,8 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
-      <p key="rating">Rating: {stars} ({chosen.rating})</p>
-      <p key="price">Price: {price_level[chosen.price]}</p>
+      <p>Rating: {stars} ({chosen.rating})</p>
+      <p>Price: {price_level[chosen.price]}</p>
 
       <div className="btn-group">
 
