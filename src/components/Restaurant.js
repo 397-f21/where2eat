@@ -40,12 +40,12 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
-      <p>Rating: {stars} ({chosen.rating})</p>
-      <p>Price: {price_level[chosen.price]}</p>
+      <p key="rating">Rating: {stars} ({chosen.rating})</p>
+      <p key="price">Price: {price_level[chosen.price]}</p>
 
       <div className="btn-group">
 
-        <button className="btn renew" onClick={() => {
+        <button className="btn renew" disabled={categories[selected].length === 1} onClick={() => {
           let newIndex;
           if (categories[selected].length - 1 >= index + 1) {
             newIndex = index + 1;

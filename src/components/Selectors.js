@@ -33,19 +33,19 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
 
     return (
         <div className="price-filters">
-            <button className={currPrice == 1 ? "selected-price-btn" : "price-btn"} onClick={() => {
+            <button className={currPrice === 1 ? "selected-price-btn" : "price-btn"} onClick={() => {
                 priceButtonClick("$");
                 setCurrPrice(1);
             }}>$</button>
-            <button className={currPrice == 2 ? "selected-price-btn" : "price-btn"} onClick={() => {
+            <button className={currPrice === 2 ? "selected-price-btn" : "price-btn"} onClick={() => {
                 priceButtonClick("$$");
                 setCurrPrice(2);
             }}>$$</button>
-            <button className={currPrice == 3 ? "selected-price-btn" : "price-btn"} onClick={() => {
+            <button className={currPrice === 3 ? "selected-price-btn" : "price-btn"} onClick={() => {
                 priceButtonClick("$$$");
                 setCurrPrice(3);
             }}>$$$</button>
-            <button className={currPrice == 4 ? "selected-price-btn" : "price-btn"} onClick={() => {
+            <button className={currPrice === 4 ? "selected-price-btn" : "price-btn"} onClick={() => {
                 priceButtonClick("$$$$");
                 setCurrPrice(4);
             }}>$$$$</button>

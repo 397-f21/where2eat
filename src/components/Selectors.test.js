@@ -18,6 +18,7 @@ test('renders homepage with buttons', async () => {
 const sorted_categories = {
     "American (New)": [{
         "rating": 4.5,
+        "photos": ["https://s3-media2.fl.yelpcdn.com/bphoto/FTi5rxWJ5VK6q4aeiYza4Q/o.jpg"],
         "price": null,
         "url": "https://www.yelp.com/biz/alcove-evanston-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA",
         "name": "Alcove Evanston ",
@@ -52,6 +53,7 @@ const sorted_categories = {
     }],
     "American (Traditional)": [{
         "rating": 4,
+        "photos": ["https://s3-media2.fl.yelpcdn.com/bphoto/FTi5rxWJ5VK6q4aeiYza4Q/o.jpg"],
         "price": '$',
         "url": "https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA",
         "name": "Chicken Shack",
