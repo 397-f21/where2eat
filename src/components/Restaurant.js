@@ -1,7 +1,6 @@
 import MapIcon from '../map-marked-alt-solid.svg';
 import YelpIcon from '../yelp-svgrepo-com.svg';
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
-import { FaDollarSign } from "react-icons/fa";
 import { useState } from "react";
 import logo from "../assets/images/no_image_available.jpg";
 import { useEffect } from 'react/cjs/react.development';
@@ -10,7 +9,6 @@ const Restaurant = ({ categories, selected, setSelected }) => {
   const [index, setIndex] = useState(0);
   const [chosen, setChosen] = useState(categories[selected][0]);
   const [stars, setStars] = useState([]);
-  //const [dollarSigns, setDollarSigns] = useState([]);
 
   var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
@@ -39,15 +37,6 @@ const Restaurant = ({ categories, selected, setSelected }) => {
     setStars(newStars);
   }, [chosen.rating]);
 
-  /*useEffect(() => {
-    const newDollarSigns = [];
-    for (let i in chosen.price.length) {
-      newDollarSigns.push(<FaDollarSign />);
-    }
-    setDollarSigns(newDollarSigns);
-  }, [chosen.price]);*/
- 
-
   return (
 
     <div className="restaurant">
@@ -61,8 +50,9 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
-      <p key="rating">{stars} ({chosen.rating})</p>
-      <p key="price">Price: {price_level[chosen.price]}</p>
+
+      <p>Rating: {stars} ({chosen.rating})</p>
+      <p>Price: {price_level[chosen.price]}</p>
       <p>Distance: {Math.round(chosen.distance / 1609.34 * 10) / 10} Miles</p>
       <div className="btn-group">
         <button className="btn renew" disabled={categories[selected].length === 1} onClick={() => {
