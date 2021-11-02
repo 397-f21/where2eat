@@ -38,5 +38,49 @@
     color: #ffffff;
     background-color: #1C3F73;
 }
+
+  
+  
+.distance-btn {
+    height: 50px;
+    background-color: #7550CB;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #ffffff;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.selected-distance-btn {
+    height: 50px;
+    background-color: #432D73;
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #ffffff;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #ffffff;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.distance-btn:hover {
+    color: #ffffff;
+    background-color: #432D73;
+}
+
   
   

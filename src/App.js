@@ -14,8 +14,10 @@ function App() {
   const [apiData, setApiData] = useState(null);
   //const [categories, setCategories] = useState(null);
   const [filteredCategories, setFilteredCategories] = useState(null);
+  const [currDistance, setCurrDistance] = useState(0.5);
 
   useEffect(async () => {
+    setLoading(true);
 
     const getGeoLocation = () => {
       if (navigator.geolocation) {
@@ -30,9 +32,10 @@ function App() {
       const payload = {
         "latitude": position.coords.latitude,
         "longitude": position.coords.longitude,
-        "radius": 1609,
+        "radius": 1609.34 * currDistance,
         "attribute": ""
       };
+      console.log(payload)
 
       try {
 
@@ -51,12 +54,13 @@ function App() {
             let businesses = data.data.search.business;
             let newCategories = {};
             for (let i = 0; i < businesses.length; i++) {
-              let category = businesses[i].categories[0].title;
-              if (category in newCategories) {
-                newCategories[category].push(businesses[i]);
-              } else {
-                newCategories[category] = [businesses[i]];
-              }
+              businesses[i].categories.forEach((category) => {
+                if (category.title in newCategories) {
+                  newCategories[category.title].push(businesses[i]);
+                } else {
+                  newCategories[category.title] = [businesses[i]];
+                }
+              })
             }
 
             var sorted_index = Object.keys(newCategories).sort();
@@ -77,7 +81,7 @@ function App() {
 
     getGeoLocation();
     
-  }, [])
+  }, [currDistance])
 
   if (loading) { 
     return (
@@ -89,7 +93,6 @@ function App() {
   }
   if (errorMsg) return <h1>errorMsg</h1>;
   if (unavailable) return <h1>Please turn on your location services to use this app</h1>;
-  
 
   return (
     <div data-testid='App' className="App">
@@ -100,7 +103,7 @@ function App() {
 
         :
 
-        <Selectors categories={apiData} setSelected={setSelected} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} />
+        <Selectors categories={apiData} setSelected={setSelected} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} currDistance={currDistance} setCurrDistance={setCurrDistance} />
       }
 
     </div>

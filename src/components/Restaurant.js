@@ -19,6 +19,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
       <p>Rating: {chosen.rating}</p>
       <p>Price: {price_level[chosen.price]}</p>
+      <p>Distance: {Math.round(chosen.distance / 1609.34 * 10) / 10} Miles</p>
 
       <div className="btn-group">
 
