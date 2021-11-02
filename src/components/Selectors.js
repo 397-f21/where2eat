@@ -26,6 +26,12 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
         setFilteredCategories(newCategories); 
     };
 
+    var sorted_index = Object.keys(filteredCategories).sort();
+    var sorted_categories = {};
+    for (var i = 0; i < sorted_index.length; i++) {
+        sorted_categories[sorted_index[i]] = filteredCategories[[sorted_index[i]]];
+    }
+
     return (
         <div>
             <div id="distanceButtons">
@@ -40,7 +46,7 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
                 <button className={currPrice === 4 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$$$$")}>$$$$</button>
             </div>
             <div className="selectors" data-testid="homepage">
-                {Object.keys(filteredCategories).map((category) => {
+                {Object.keys(sorted_categories).map((category) => {
                     return (
                         <button data-testid="selection-button" className="select-btn"
                             key={category}

@@ -1,18 +1,25 @@
 .restaurant {
   background-color: rgb(230, 236, 223);
-  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-/* .category {
-    font-size: 40px;
-} */
+.photo{
+    height: 200px;
+    
+}
+
+.category {
+    font-size: 25px;
+    margin-top: 30px;
+}
 
 .name {
-    font-size: 42px;
+    font-size: 35px;
+    margin: 0;
+    margin-bottom: 20px;
 }
 
 .address:link {
@@ -30,7 +37,7 @@
     font-size: 20px;
 }
 .yelp {  
-    margin-bottom: 40px;
+    /* margin-bottom: 40px; */
     font-size:20px;
 }
 
@@ -57,8 +64,15 @@
   transition: all 0.2s;
 }
 
-.btn:hover {
-  color: #ffffff;
-  background-color: #E23636;
+@media only screen and (min-width: 600px) {
+    .btn:hover {
+        color: #ffffff;
+        background-color: #E23636;
+    }
+}
+
+.renew:disabled{
+    color:#ffffff;
+    background-color:#888282e3;
 }
 

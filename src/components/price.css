@@ -39,7 +39,9 @@
     background-color: #1C3F73;
 }
 
-  
+.price-filters{
+    margin-top:30px;
+}
   
 .distance-btn {
     height: 50px;
