@@ -47,9 +47,8 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
       <p key="rating">Rating: {stars} ({chosen.rating})</p>
       <p key="price">Price: {price_level[chosen.price]}</p>
-
+      <p>Distance: {Math.round(chosen.distance / 1609.34 * 10) / 10} Miles</p>
       <div className="btn-group">
-
         <button className="btn renew" disabled={categories[selected].length === 1} onClick={() => {
           let newIndex;
           if (categories[selected].length - 1 >= index + 1) {
