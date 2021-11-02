@@ -2,6 +2,7 @@ import MapIcon from '../map-marked-alt-solid.svg';
 import YelpIcon from '../yelp-svgrepo-com.svg';
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { useState } from "react";
+import logo from "../assets/images/no_image_available.jpg";
 
 const Restaurant = ({ categories, selected, setSelected }) => {
   const [index, setIndex] = useState(0);
@@ -36,7 +37,11 @@ const Restaurant = ({ categories, selected, setSelected }) => {
     <div className="restaurant">
       <h1 className="category">{selected}</h1>
       <h2 className="name">{chosen.name}</h2>
-      <img className="photo" src={chosen.photos[0]} />
+      {chosen.photos[0].includes("None") ?
+        <img className="photo" src={logo} />
+      :
+        <img className="photo" src={chosen.photos[0]} />
+      }
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>

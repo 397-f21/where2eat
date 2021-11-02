@@ -49,6 +49,7 @@ function App() {
           .then(data => {
             
             let businesses = data.data.search.business;
+            console.log(businesses);
             let newCategories = {};
             for (let i = 0; i < businesses.length; i++) {
               let category = businesses[i].categories[0].title;
