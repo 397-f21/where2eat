@@ -16,8 +16,20 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
                 }
             }
         };
+        // var sorted_index = Object.keys(newCategories).sort();
+        // var sorted_categories = {};
+        // for (var i = 0; i < sorted_index.length; i++) {
+        //     sorted_categories[sorted_index[i]] = newCategories[[sorted_index[i]]];
+        // }
+        // console.log(sorted_categories);
         setFilteredCategories(newCategories);
     };
+
+    var sorted_index = Object.keys(filteredCategories).sort();
+    var sorted_categories = {};
+    for (var i = 0; i < sorted_index.length; i++) {
+        sorted_categories[sorted_index[i]] = filteredCategories[[sorted_index[i]]];
+    }
 
     return (
         <div>
@@ -38,7 +50,7 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
                 setCurrPrice(4);
             }}>$$$$</button>
             <div className="selectors" data-testid="homepage">
-                {Object.keys(filteredCategories).map((category) => {
+                {Object.keys(sorted_categories).map((category) => {
                     return (
                         <button data-testid="selection-button" className="select-btn"
                             key={category}
