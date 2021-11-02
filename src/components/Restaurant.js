@@ -1,36 +1,52 @@
 import MapIcon from '../map-marked-alt-solid.svg';
 import YelpIcon from '../yelp-svgrepo-com.svg';
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+import { FaDollarSign } from "react-icons/fa";
 import { useState } from "react";
 import logo from "../assets/images/no_image_available.jpg";
+import { useEffect } from 'react/cjs/react.development';
 
 const Restaurant = ({ categories, selected, setSelected }) => {
   const [index, setIndex] = useState(0);
   const [chosen, setChosen] = useState(categories[selected][0]);
+  const [stars, setStars] = useState([]);
+  //const [dollarSigns, setDollarSigns] = useState([]);
 
   var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
-  // rating stars
-  let step = 0;
-  const stars = [];
-  let ratings = chosen.rating;
-  while (step < 5) {
-    if (ratings >= 1) {
-      // full star
-      stars.push(<BsStarFill />);
-      ratings--;
-      step++;
-    } else if (ratings < 1 && ratings > 0) {
-      // half star
-      stars.push(<BsStarHalf />);
-      ratings--;
-      step++;
-    } else {
-      // empty star
-      stars.push(<BsStar />);
-      step++;
+  useEffect(() => {
+    // rating stars
+    let step = 0;
+    const newStars = [];
+    let ratings = chosen.rating;
+    while (step < 5) {
+      if (ratings >= 1) {
+        // full star
+        newStars.push(<BsStarFill style={{ color: "#437BD0", fontSize: "20px" } } key={step}/>);
+        ratings--;
+        step++;
+      } else if (ratings < 1 && ratings > 0) {
+        // half star
+        newStars.push(<BsStarHalf style={{ color: "#437BD0", fontSize: "20px"  }} key={step}/>);
+        ratings--;
+        step++;
+      } else {
+        // empty star
+        newStars.push(<BsStar style={{ color: "#437BD0", fontSize: "20px"  }} key={step}/>);
+        step++;
+      }
     }
-  }
+    setStars(newStars);
+  }, [chosen.rating]);
+
+  /*useEffect(() => {
+    const newDollarSigns = [];
+    for (let i in chosen.price.length) {
+      newDollarSigns.push(<FaDollarSign />);
+    }
+    setDollarSigns(newDollarSigns);
+  }, [chosen.price]);*/
+ 
 
   return (
 
@@ -45,7 +61,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
-      <p key="rating">Rating: {stars} ({chosen.rating})</p>
+      <p key="rating">{stars} ({chosen.rating})</p>
       <p key="price">Price: {price_level[chosen.price]}</p>
       <p>Distance: {Math.round(chosen.distance / 1609.34 * 10) / 10} Miles</p>
       <div className="btn-group">
