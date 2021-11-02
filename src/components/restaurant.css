@@ -6,8 +6,14 @@
   justify-content: center;
 }
 
+.photo{
+    height: 200px;
+    
+}
+
 .category {
     font-size: 25px;
+    margin-top: 30px;
 }
 
 .name {
