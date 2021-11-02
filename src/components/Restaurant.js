@@ -7,13 +7,14 @@ const Restaurant = ({ categories, selected, setSelected }) => {
   const [chosen, setChosen] = useState(categories[selected][0]);
 
   var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
-
+  console.log(chosen);
   return (
 
 
     <div className="restaurant">
       <h1 className="category">{selected}</h1>
       <h2 className="name">{chosen.name}</h2>
+      <img src={chosen.photos[0]} height="240px"/>
       <hr />
       <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
       <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>

@@ -32,7 +32,7 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
     }
 
     return (
-        <div>
+        <div className="price-filters">
             <button className={currPrice == 1 ? "selected-price-btn" : "price-btn"} onClick={() => {
                 priceButtonClick("$");
                 setCurrPrice(1);
