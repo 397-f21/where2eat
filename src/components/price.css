@@ -37,6 +37,7 @@
 .price-btn:hover {
     color: #ffffff;
     background-color: #1C3F73;
+    cursor: pointer;
 }
 
 .price-filters{
@@ -82,6 +83,11 @@
 .distance-btn:hover {
     color: #ffffff;
     background-color: #432D73;
+    cursor: pointer;
+}
+
+#distanceButtons {
+    padding-top: 20px;
 }
 
   
