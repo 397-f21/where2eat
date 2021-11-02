@@ -64,8 +64,15 @@
   transition: all 0.2s;
 }
 
-.btn:hover {
-  color: #ffffff;
-  background-color: #E23636;
+@media only screen and (min-width: 600px) {
+    .btn:hover {
+        color: #ffffff;
+        background-color: #E23636;
+    }
+}
+
+.renew:disabled{
+    color:#ffffff;
+    background-color:#888282e3;
 }
 

@@ -6,6 +6,7 @@ import App from "../App";
 
 const chosenObject = {
     "rating": 4.5,
+    "photos": ["https://s3-media2.fl.yelpcdn.com/bphoto/FTi5rxWJ5VK6q4aeiYza4Q/o.jpg"],
     "price": null,
     "url": "https://www.yelp.com/biz/alcove-evanston-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA",
     "name": "Alcove Evanston ",
@@ -41,6 +42,7 @@ const chosenObject = {
 
 const newObject = {
     "rating": 4.5,
+    "photos": ["https://s3-media2.fl.yelpcdn.com/bphoto/FTi5rxWJ5VK6q4aeiYza4Q/o.jpg"],
     "price": "$$",
     "url": "https://www.yelp.com/biz/ovo-frito-cafe-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA",
     "name": "Ovo Frito Cafe",
@@ -78,7 +80,8 @@ const newObject = {
 }
 
 const categories = {
-    "American (New)": [chosenObject, newObject]
+    "American (New)": [chosenObject, newObject],
+    "Only One Option": [chosenObject]
 }
 
 test("Restaurant page should render category, name, yelp, map, back button, and generate new restaurant button", async () => {
@@ -102,6 +105,16 @@ test("Generate new restaurant button should select a new restaurant", async() =>
     expect(await screen.findByText(/Ovo Frito Cafe/i)).toBeVisible();
     expect(await screen.findByText("American (New)")).toBeVisible();
     expect(await screen.findByText(/1936 Maple Ave/i)).toBeVisible();
+
+})
+
+test("Generate new restaurant button should be disabled if there is only one restaurant in the category", async() => {
+    render(<Restaurant categories={categories} selected={"Only One Option"} setSelected={()=>{}}/>);
+    expect(await screen.findByText(/Alcove Evanston/i)).toBeVisible();
+    expect(await screen.findByText("Only One Option")).toBeVisible();
+    expect(await screen.findByText(/1625 Maple Ave/i)).toBeVisible();
+    const newRestaurantBtn = await screen.findByRole("button", {name:/Suggestion/i});
+    expect(newRestaurantBtn).toBeDisabled();
 
 })
 
