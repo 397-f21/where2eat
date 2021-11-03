@@ -3,7 +3,6 @@ import "./price.css";
 
 const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCurrDistance }) => {
     const [currPrice, setCurrPrice] = useState(parseInt(localStorage.getItem("currPrice")) ?? 0);
-
     const priceButtonClick = (price) => {
         if (currPrice === price.length) {
             setCurrPrice(0);
