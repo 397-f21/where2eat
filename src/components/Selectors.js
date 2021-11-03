@@ -16,7 +16,6 @@ const Selectors = ({ setSelected, filteredCategories }) => {
 
     return (
         <div>
-            
             <div className="selectors" data-testid="homepage">
                 {Object.keys(sortedCategories).map((category) => {
                     return (
