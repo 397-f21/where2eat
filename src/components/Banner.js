@@ -1,5 +1,4 @@
 import logo from "../assets/images/logo.jpg";
-import './Banner.js'
 import './Banner.css'
 
 const Banner = () => {

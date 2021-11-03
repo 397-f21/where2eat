@@ -3,7 +3,7 @@ import YelpIcon from '../yelp-svgrepo-com.svg';
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 import { useState } from "react";
 import logo from "../assets/images/no_image_available.jpg";
-import { useEffect } from 'react/cjs/react.development';
+import { useEffect } from 'react';
 
 const Restaurant = ({ categories, selected, setSelected }) => {
   const [index, setIndex] = useState(0);
