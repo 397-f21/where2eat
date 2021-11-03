@@ -10,7 +10,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
   const [chosen, setChosen] = useState(categories[selected][0]);
   const [stars, setStars] = useState([]);
 
-  var price_level = { null: 'Not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
+  var price_level = { null: 'Price not available yet', '$': '$10 and under', '$$': 'Between $10-$25', '$$$': 'Between $25-$45', '$$$$': '$50 and up' };
 
   useEffect(() => {
     // rating stars
@@ -47,13 +47,16 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       :
         <img className="photo" src={chosen.photos[0]} />
       }
-      <hr />
-      <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
-      <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
-
-      <p>Rating: {stars} ({chosen.rating})</p>
-      <p>Price: {price_level[chosen.price]}</p>
-      <p>Distance: {Math.round(chosen.distance / 1609.34 * 10) / 10} Miles</p>
+      
+      <div className="descriptors">
+        <p className="descriptor">{stars} ({chosen.rating})</p>
+        <p className="descriptor">{price_level[chosen.price]}</p>
+        <p className="descriptor">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
+      </div>
+      <div className="links">
+        <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
+        <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
+      </div>
       <div className="btn-group">
         <button className="btn renew" disabled={categories[selected].length === 1} onClick={() => {
           let newIndex;

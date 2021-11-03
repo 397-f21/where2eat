@@ -42,12 +42,12 @@
   width: 18%;
   height: 15%;
   color: white;
-  font-weight: bold;
   /* background-color: #f5674e; */
   background-color: #f36969e3;
   border: none;
   border-radius: 10px;
   margin: 12px 10px;
+  font-size: 18px;
 }
 
 .select-btn:hover{
@@ -72,6 +72,7 @@
     border: none;
     border-radius: 10px;
     margin: 10px 0;
+    font-size: 18px;
   }
 
   .selectors {
