@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./price.css"
 
 const Selectors = ({ setSelected, filteredCategories }) => {
@@ -10,7 +9,7 @@ const Selectors = ({ setSelected, filteredCategories }) => {
         var sorted_categories = {};
         for (var i = 0; i < sorted_index.length; i++) {
             sorted_categories[sorted_index[i]] = filteredCategories[[sorted_index[i]]];
-        }
+        };
         setSortedCategories(sorted_categories);
     }, [filteredCategories]);
 

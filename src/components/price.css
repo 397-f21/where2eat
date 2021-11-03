@@ -34,16 +34,7 @@
     transition: all 0.2s;
 }
 
-.price-btn:hover {
-    color: #ffffff;
-    background-color: #1C3F73;
-    cursor: pointer;
-}
 
-.selected-price-btn:hover {
-    cursor: pointer;
-    background-color: #437BD0;
-}
 
 .price-filters{
     margin-top:30px;
@@ -85,15 +76,26 @@
     transition: all 0.2s;
 }
 
-.distance-btn:hover {
-    color: #ffffff;
-    background-color: #432D73;
-    cursor: pointer;
-}
-
 #distanceButtons {
     padding-top: 20px;
 }
 
-  
+@media (hover: hover) and (pointer: fine) {
+    .price-btn:hover {
+        color: #ffffff;
+        background-color: #1C3F73;
+        cursor: pointer;
+    }
+    
+    .selected-price-btn:hover {
+        cursor: pointer;
+        background-color: #437BD0;
+    }
+
+    .distance-btn:hover {
+        color: #ffffff;
+        background-color: #432D73;
+        cursor: pointer;
+    }
+}
   
