@@ -35,9 +35,9 @@ const Selectors = ({ categories, setSelected, filteredCategories, setFilteredCat
     return (
         <div>
             <div id="distanceButtons">
-                <button className={currDistance === 0.5 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(0.5)}>0.5 Miles</button>
-                <button className={currDistance === 1 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(1)}>1 Mile</button>
-                <button className={currDistance === 3 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(3)}>3 Miles</button>
+                <button className={currDistance === 0.5 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(0.5)}>{"< 0.5 Miles"}</button>
+                <button className={currDistance === 1 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(1)}>{"< 1 Mile"}</button>
+                <button className={currDistance === 3 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(3)}>{"< 3 Miles"}</button>
             </div>
             <div id="priceButtons">
                 <button className={currPrice === 1 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$")}>$</button>
