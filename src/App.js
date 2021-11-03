@@ -35,7 +35,6 @@ function App() {
         "radius": 1609.34 * currDistance,
         "attribute": ""
       };
-      console.log(payload)
 
       try {
 
@@ -50,7 +49,7 @@ function App() {
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
           .then(response => response.json())
           .then(data => {
-            
+            console.log(data)
             let businesses = data.data.search.business;
             console.log(businesses);
             let newCategories = {};
