@@ -58,9 +58,9 @@
 
 .selectors {
   width: 90%;
-  height: 80vh;
+  height: 70vh;
   margin: 0 auto;
-
+  overflow-y: scroll;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -82,7 +82,7 @@
 
   .selectors {
     width: 90%;
-    height: 80vh;
+    height: 70vh;
     overflow: hidden;
     overflow-y: scroll;
 
