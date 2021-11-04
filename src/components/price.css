@@ -34,11 +34,7 @@
     transition: all 0.2s;
 }
 
-.price-btn:hover {
-    color: #ffffff;
-    background-color: #1C3F73;
-    cursor: pointer;
-}
+
 
 .price-filters{
     margin-top:30px;
@@ -48,7 +44,7 @@
     height: 50px;
     background-color: #7550CB;
     display: inline-block;
-    padding: 0.35em 1.2em;
+    padding: 0.15em .8em;
     border: 0.1em solid #ffffff;
     margin: 0 0.3em 0.3em 0;
     border-radius: 10px;
@@ -66,7 +62,7 @@
     height: 50px;
     background-color: #432D73;
     display: inline-block;
-    padding: 0.35em 1.2em;
+    padding: 0.15em .8em;
     border: 0.1em solid #ffffff;
     margin: 0 0.3em 0.3em 0;
     border-radius: 10px;
@@ -80,15 +76,26 @@
     transition: all 0.2s;
 }
 
-.distance-btn:hover {
-    color: #ffffff;
-    background-color: #432D73;
-    cursor: pointer;
-}
-
 #distanceButtons {
     padding-top: 20px;
 }
 
-  
+@media (hover: hover) and (pointer: fine) {
+    .price-btn:hover {
+        color: #ffffff;
+        background-color: #1C3F73;
+        cursor: pointer;
+    }
+    
+    .selected-price-btn:hover {
+        cursor: pointer;
+        background-color: #437BD0;
+    }
+
+    .distance-btn:hover {
+        color: #ffffff;
+        background-color: #432D73;
+        cursor: pointer;
+    }
+}
   

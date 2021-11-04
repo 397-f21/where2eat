@@ -7,14 +7,14 @@
 }
 
 .photo{
-    height: 200px;
+    height: 195px;
     border-radius: 5%;
-    border: 10px solid #E23636;
+    border: 1px solid #000000;
 }
 
 .category {
     font-size: 25px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 .name {
@@ -23,18 +23,31 @@
     margin-bottom: 20px;
 }
 
-.address:link {
-    text-decoration: none;
-    color: black;
+.descriptors{
+    margin-top:10px;
+    margin-bottom: 30px;
 }
 
-.yelp:link {
+.descriptor{
+    margin-top:5px;
+    margin-bottom:5px;
+    font-size:20px;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    margin-top:0px;
+    margin-bottom:25px;
+}
+
+.yelp:link, .address:link {
     text-decoration: none;
-    /*color: black;*/
+    color: blue;
 }
 
 .address {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     font-size: 20px;
 }
 .yelp {  

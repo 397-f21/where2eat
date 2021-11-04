@@ -8,7 +8,7 @@ const mock_categories = {"Chicken Shop" : [], "American (New)": [], "Mediterrane
     "Asian Fusion": [], "Coffee & Tea": [], "Indian": []};
 
 test('renders homepage with buttons', async () => {
-  render(<Selectors categories={mock_categories} setSelected={() => {}}/>);
+  render(<Selectors filteredCategories={mock_categories} setSelected={() => {}}/>);
   expect(await screen.getByTestId("homepage")).toBeVisible();
   Object.keys(mock_categories).forEach(async (category) => {
       expect(await screen.getByText(category)).toBeVisible();
@@ -92,7 +92,7 @@ describe("Button Component", () => {
 
     it("render restaurant after button click", async () => {
         await act(async () => {
-            render(<Selectors categories={sorted_categories} setChosen={() => { return sorted_categories["American (New)"][0] }} setSelected={() => { return "American (New)" }} />);
+            render(<Selectors filteredCategories={sorted_categories} setSelected={() => { return "American (New)" }} />);
             expect(await screen.findByRole("button", { name: "American (Traditional)" })).toBeVisible();
             expect(await screen.findByRole("button", { name: "American (New)" })).toBeVisible();
         });

@@ -3,7 +3,8 @@ import { useState, useEffect } from "react";
 import Banner from './components/Banner';
 import Restaurant from './components/Restaurant';
 import "./components/restaurant.css";
-import Selectors from './components/Selectors'
+import Selectors from './components/Selectors';
+import FilterButtons from './components/FilterButtons';
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
   //const [categories, setCategories] = useState(null);
   const [filteredCategories, setFilteredCategories] = useState(null);
   const [currDistance, setCurrDistance] = useState(0.5);
+
+  useEffect(() => {
+    localStorage.removeItem("currPrice");
+  }, []);
 
   useEffect(async () => {
     setLoading(true);
@@ -98,12 +103,12 @@ function App() {
     <div data-testid='App' className="App">
       <Banner data-testid='banner' />
       {selected ?
-
         <Restaurant categories={filteredCategories} selected={selected} setSelected={setSelected} />
-
         :
-
-        <Selectors categories={apiData} setSelected={setSelected} filteredCategories={filteredCategories} setFilteredCategories={setFilteredCategories} currDistance={currDistance} setCurrDistance={setCurrDistance} />
+        <>
+          <FilterButtons categories={apiData} setFilteredCategories={setFilteredCategories} currDistance={currDistance} setCurrDistance={setCurrDistance} />
+          <Selectors setSelected={setSelected} filteredCategories={filteredCategories} />
+        </>
       }
 
     </div>
