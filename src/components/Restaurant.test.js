@@ -79,8 +79,45 @@ const newObject = {
     ]
 }
 
+const chosenObject2 = {
+        "rating": 4,
+        "photos": ["https://s3-media2.fl.yelpcdn.com/bphoto/FTi5rxWJ5VK6q4aeiYza4Q/o.jpg"],
+        "price": '$',
+        "url": "https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA",
+        "name": "Chicken Shack",
+        "location": {
+            "address1": '1925 Ridge Ave'
+        },
+        "categories": [
+            {
+                "title": "American (Traditional)"
+            }
+        ],
+        "reviews": [
+            {
+                "text": "I called ahead, at 6p for 7p pickup. Got there at 7 and it wasn't ready. I was expecting my food to be packaged and ready for pay and pickup on a side table...",
+                "rating": 5,
+                "time_created": "2021-10-02 07:00:30",
+                "url": "https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&hrid=J_i5y78xiezoOqmEVD_V3A&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA"
+            },
+            {
+                "text": "This is always a visit for me when I am back in town. There is always the same menu for the last 30+ years, and I like that.The Bit Dinner.Yes extra...",
+                "rating": 5,
+                "time_created": "2021-06-07 20:07:19",
+                "url": "https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&hrid=R6uUUbUOKaBrx83Uozsbmw&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA"
+            },
+            {
+                "text": "Chicken is one of my favorite foods, so when I find a recommended place, I'm always excited! Chicken was delicious! Fries were crispy! And the biscuits and...",
+                "rating": 5,
+                "time_created": "2021-10-29 13:02:09",
+                "url": "https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA"
+            }
+        ]
+}
+
 const categories = {
     "American (New)": [chosenObject, newObject],
+    "American (Traditional)": [chosenObject2],
     "Only One Option": [chosenObject]
 }
 
@@ -118,3 +155,21 @@ test("Generate new restaurant button should be disabled if there is only one res
 
 })
 
+
+
+test("Yelp anchor tag should contain href with restaurant link", async () => {
+    render(<Restaurant categories={categories} selected={"American (Traditional)"} setSelected={()=>{}}/>);
+    expect(await screen.getByText('View on Yelp').closest('a')).toHaveAttribute('href', 'https://www.yelp.com/biz/chicken-shack-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA');
+})
+
+test("Yelp anchor tag should contain href with restaurant link", async () => {
+    render(<Restaurant categories={categories} selected={"American (New)"} setSelected={()=>{}}/>);
+    expect(await screen.getByText('View on Yelp').closest('a')).toHaveAttribute('href', 'https://www.yelp.com/biz/alcove-evanston-evanston?adjust_creative=IrU6LbqHUMMEiqemD9YDLA&utm_campaign=yelp_api_v3&utm_medium=api_v3_graphql&utm_source=IrU6LbqHUMMEiqemD9YDLA');
+})
+
+test("Google anchor tag should contain href", async () => {
+    render(<Restaurant categories={categories} selected={"American (New)"} setSelected={()=>{}}/>);
+    expect(await screen.getByText('1625 Maple Ave').closest('a')).toHaveAttribute('href');
+    render(<Restaurant categories={categories} selected={"American (Traditional)"} setSelected={()=>{}}/>);
+    expect(await screen.getByText('1925 Ridge Ave').closest('a')).toHaveAttribute('href');
+})
