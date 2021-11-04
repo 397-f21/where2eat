@@ -9,9 +9,9 @@ describe("Test App", () => {
     it('content test', () => {
         cy.get('[data-testid=banner]').contains('Find Your Meal!');
     })
-    it.skip('interaction test', () => {
-        cy.wait(60000);
-        cy.get('[data-testid=selection-button').click();
+    it('interaction test', () => {
+        cy.get('[data-testid=selection-button', { timeout: 10000 }).first().click();
+        cy.get('[data-testid="back button"]');
     })
 })
 
