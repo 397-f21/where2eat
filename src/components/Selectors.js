@@ -16,7 +16,10 @@ const Selectors = ({ setSelected, filteredCategories }) => {
     return (
         <div>
             <div className="selectors" data-testid="homepage">
-                {Object.keys(sortedCategories).map((category) => {
+                {Object.keys(sortedCategories).length === 0 ?
+                <p>There are no restaurants which match your search criteria.</p>
+                :
+                Object.keys(sortedCategories).map((category) => {
                     return (
                         <button data-testid="selection-button" className="select-btn"
                             key={category}
