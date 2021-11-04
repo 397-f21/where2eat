@@ -54,8 +54,8 @@ const Restaurant = ({ categories, selected, setSelected }) => {
         <p className="descriptor">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
       </div>
       <div className="links">
-        <a className="address" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
-        <a className="yelp" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
+        <a className="address" data-testid="mapsLink" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
+        <a className="yelp" data-testid="yelpLink" href={chosen.url} target="_blank"><img src={YelpIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />View on Yelp</a>
       </div>
       <div className="btn-group">
         <button className="btn renew" disabled={categories[selected].length === 1} onClick={() => {
