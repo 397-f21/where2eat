@@ -17,7 +17,7 @@ const Selectors = ({ setSelected, filteredCategories }) => {
         <div>
             <div className="selectors" data-testid="homepage">
                 {Object.keys(sortedCategories).length === 0 ?
-                <p>There are no restaurants which match your search criteria.</p>
+                <p data-cy = "no_restaurants_text">There are no restaurants which match your search criteria.</p>
                 :
                 Object.keys(sortedCategories).map((category) => {
                     return (

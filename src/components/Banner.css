@@ -89,6 +89,12 @@
     }
 }
 
+@media screen and (min-width: 800px) {
+    .banner ul li:nth-child(2){
+        width:84%;
+    }
+}
+
 @media screen and (min-width: 1000px) {
     .banner ul li:nth-child(2){
         width:92%;

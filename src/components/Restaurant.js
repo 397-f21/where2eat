@@ -50,7 +50,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       
       <div className="descriptors">
         <p className="descriptor">{stars} ({chosen.rating})</p>
-        <p className="descriptor">{price_level[chosen.price]}</p>
+        <p className="descriptor" data-cy = "price">{price_level[chosen.price]}</p>
         <p className="descriptor">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
       </div>
       <div className="links">
