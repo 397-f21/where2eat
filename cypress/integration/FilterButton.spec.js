@@ -3,7 +3,7 @@ beforeEach(() => {
 })
 
 describe("Testing Filters", () => {
-    it.skip('Testing Price Filter', () => {
+    it('Testing Price Filter', () => {
         cy.get('[data-cy = one_dollar]',{ timeout: 30000 }).click();
         let count = 0
         cy.get('div').then((val)=>{
