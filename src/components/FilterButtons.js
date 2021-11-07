@@ -30,9 +30,9 @@ const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCur
     return (
         <div data-testid="FilterButtons">
             <div id="distanceButtons">
-                <button className={currDistance === 0.5 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(0.5)}>&le; 0.5 Miles</button>
-                <button className={currDistance === 1 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(1)}>&le; 1 Mile</button>
-                <button className={currDistance === 3 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(3)}>&le; 3 Miles</button>
+                <button className={currDistance === 0.5 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(0.5)} data-cy="half_mile">&le; 0.5 Miles</button>
+                <button className={currDistance === 1 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(1)} data-cy="one_mile">&le; 1 Mile</button>
+                <button className={currDistance === 3 ? "selected-distance-btn" : "distance-btn"} onClick={() => setCurrDistance(3)} data-cy="three_mile">&le; 3 Miles</button>
             </div>
             <div id="priceButtons">
                 <button className={currPrice === 1 ? "selected-price-btn" : "price-btn"} onClick={() => priceButtonClick("$")} data-cy = "one_dollar">$</button>
