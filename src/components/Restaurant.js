@@ -40,7 +40,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
   return (
 
     <div className="restaurant">
-      <h1 className="category">{selected}</h1>
+      <h1 className="category" data-testid="category">{selected}</h1>
       <h2 className="name">{chosen.name}</h2>
       {chosen.photos[0].includes("None") ?
         <img className="photo" src={logo} />
@@ -49,9 +49,9 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       }
       
       <div className="descriptors">
-        <p className="descriptor">{stars} ({chosen.rating})</p>
+        <p className="descriptor" data-testid="ratings">{stars} ({chosen.rating})</p>
         <p className="descriptor" data-cy = "price">{price_level[chosen.price]}</p>
-        <p className="descriptor">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
+        <p className="descriptor" data-testid="distance">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
       </div>
       <div className="links">
         <a className="address" data-testid="mapsLink" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>

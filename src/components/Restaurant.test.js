@@ -173,3 +173,19 @@ test("Google anchor tag should contain href", async () => {
     render(<Restaurant categories={categories} selected={"American (Traditional)"} setSelected={()=>{}}/>);
     expect(await screen.getByText('1925 Ridge Ave').closest('a')).toHaveAttribute('href');
 })
+
+test('Ratings and Distance is rendered', async () => {
+    render(<Restaurant categories={categories} selected={"American (New)"} setSelected={()=>{}}/>);
+    expect(await screen.getByTestId(/ratings/i)).toBeTruthy();
+    expect(await screen.getByTestId(/ratings/i)).toBeVisible();
+    expect(await screen.getByTestId(/distance/i)).toBeTruthy();
+    expect(await screen.getByTestId(/distance/i)).toBeVisible();
+})
+
+test("Ratings and Distance is rendered", async () => {
+    render(<Restaurant categories={categories} selected={"American (Traditional)"} setSelected={()=>{}}/>);
+    expect(await screen.getByTestId(/ratings/i)).toBeTruthy();
+    expect(await screen.getByTestId(/ratings/i)).toBeVisible();
+    expect(await screen.getByTestId(/distance/i)).toBeTruthy();
+    expect(await screen.getByTestId(/distance/i)).toBeVisible();
+})
