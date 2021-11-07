@@ -98,3 +98,17 @@ describe("Button Component", () => {
         });
     });
 });
+
+const mock_categories_unsorted = {"Chicken Shop" : [], "American (New)": [], "Mediterranean": [], 
+    "Breakfast & Brunch": [], "Chinese": []};
+
+
+test("render category selection by alphabetical ordering", async () => {
+    render(<Selectors filteredCategories={mock_categories_unsorted} setSelected={() => {}}/>);
+    const btn_list = await screen.findAllByRole("button");
+    expect(btn_list[0]).toHaveTextContent("American (New)");
+    expect(btn_list[1]).toHaveTextContent("Breakfast & Brunch");
+    expect(btn_list[2]).toHaveTextContent("Chicken Shop");
+    expect(btn_list[3]).toHaveTextContent("Chinese");
+    expect(btn_list[4]).toHaveTextContent("Mediterranean");
+})
