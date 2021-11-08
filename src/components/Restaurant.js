@@ -20,17 +20,17 @@ const Restaurant = ({ categories, selected, setSelected }) => {
     while (step < 5) {
       if (ratings >= 1) {
         // full star
-        newStars.push(<BsStarFill style={{ color: "#437BD0", fontSize: "20px" } } key={step}/>);
+        newStars.push(<BsStarFill style={{ color: "#437BD0", fontSize: "20px" }} key={step} />);
         ratings--;
         step++;
       } else if (ratings < 1 && ratings > 0) {
         // half star
-        newStars.push(<BsStarHalf style={{ color: "#437BD0", fontSize: "20px"  }} key={step}/>);
+        newStars.push(<BsStarHalf style={{ color: "#437BD0", fontSize: "20px" }} key={step} />);
         ratings--;
         step++;
       } else {
         // empty star
-        newStars.push(<BsStar style={{ color: "#437BD0", fontSize: "20px"  }} key={step}/>);
+        newStars.push(<BsStar style={{ color: "#437BD0", fontSize: "20px" }} key={step} />);
         step++;
       }
     }
@@ -44,14 +44,14 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <h2 className="name">{chosen.name}</h2>
       {chosen.photos[0].includes("None") ?
         <img className="photo" src={logo} />
-      :
+        :
         <img className="photo" src={chosen.photos[0]} />
       }
-      
+
       <div className="descriptors">
         <p className="descriptor" data-testid="ratings">{stars} ({chosen.rating})</p>
-        <p className="descriptor" data-cy = "price">{price_level[chosen.price]}</p>
-        <p className="descriptor" data-cy = "distance" data-testid="distance">{Math.floor(chosen.distance / 1609.34 * 10) / 10} miles away</p>
+        <p className="descriptor" data-cy="price">{price_level[chosen.price]}</p>
+        <p className="descriptor" data-cy="distance" data-testid="distance">{Math.floor(chosen.distance / 1609.34 * 10) / 10} miles away</p>
       </div>
       <div className="links">
         <a className="address" data-testid="mapsLink" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>

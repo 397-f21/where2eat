@@ -90,10 +90,10 @@ function App() {
 
   if (loading) { 
     return (
-      <>
+      <div>
         <Banner />
         <h1>Loading the data...</h1>
-      </>
+      </div>
     )
   }
   if (errorMsg) return <h1>errorMsg</h1>;
