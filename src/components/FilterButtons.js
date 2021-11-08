@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./price.css";
 
 const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCurrDistance }) => {
@@ -26,6 +26,22 @@ const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCur
         };
         setFilteredCategories(newCategories); 
     };
+
+    useEffect(() => {
+        const newCategories = {}
+        for (let key in categories) {
+            for (let restaurant of categories[key]) {
+                if (restaurant.price !== null && restaurant.price.length === currPrice) {
+                    if (key in newCategories) {
+                        newCategories[key].push(restaurant);
+                    } else {
+                        newCategories[key] = [restaurant];
+                    }
+                }
+            }
+        };
+        setFilteredCategories(newCategories); 
+    }, [currDistance]);
 
     return (
         <div data-testid="FilterButtons">
