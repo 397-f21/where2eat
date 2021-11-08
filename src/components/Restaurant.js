@@ -51,7 +51,7 @@ const Restaurant = ({ categories, selected, setSelected }) => {
       <div className="descriptors">
         <p className="descriptor" data-testid="ratings">{stars} ({chosen.rating})</p>
         <p className="descriptor" data-cy = "price">{price_level[chosen.price]}</p>
-        <p className="descriptor" data-testid="distance">{Math.round(chosen.distance / 1609.34 * 10) / 10} miles away</p>
+        <p className="descriptor" data-cy = "distance" data-testid="distance">{Math.floor(chosen.distance / 1609.34 * 10) / 10} miles away</p>
       </div>
       <div className="links">
         <a className="address" data-testid="mapsLink" href={"http://maps.google.com/?q=" + chosen.location.address1.replace(" ", "+")} target="_blank"><img src={MapIcon} width="15px" height="15px" style={{ paddingRight: "10px" }} />{chosen.location.address1}</a>
