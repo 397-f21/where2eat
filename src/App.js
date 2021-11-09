@@ -54,9 +54,7 @@ function App() {
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
           .then(response => response.json())
           .then(data => {
-            console.log(data)
             let businesses = data.data.search.business;
-            console.log(businesses);
             let newCategories = {};
             for (let i = 0; i < businesses.length; i++) {
               businesses[i].categories.forEach((category) => {

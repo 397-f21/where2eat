@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./price.css";
 
 const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCurrDistance }) => {
-    const [currPrice, setCurrPrice] = useState(parseInt(localStorage.getItem("currPrice")) ?? 0);
+    const [currPrice, setCurrPrice] = useState(localStorage.getItem("currPrice") === null ? 0 : parseInt(localStorage.getItem("currPrice")));
     const priceButtonClick = (price) => {
         if (currPrice === price.length) {
             setCurrPrice(0);
@@ -26,6 +26,26 @@ const FilterButtons = ({ categories, setFilteredCategories, currDistance, setCur
         };
         setFilteredCategories(newCategories); 
     };
+
+    useEffect(() => {
+        if (currPrice === 0) {
+            setFilteredCategories(categories);
+        } else {
+            const newCategories = {}
+            for (let key in categories) {
+                for (let restaurant of categories[key]) {
+                    if (restaurant.price !== null && restaurant.price.length === currPrice) {
+                        if (key in newCategories) {
+                            newCategories[key].push(restaurant);
+                        } else {
+                            newCategories[key] = [restaurant];
+                        }
+                    }
+                }
+            };
+            setFilteredCategories(newCategories); 
+        }
+    }, [currDistance]);
 
     return (
         <div data-testid="FilterButtons">
