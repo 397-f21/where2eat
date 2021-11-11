@@ -1,5 +1,18 @@
 beforeEach(() => {
-    cy.visit('/');
+    cy.visit('/', {
+        onBeforeLoad (win) {
+        cy
+        .stub(win.navigator.geolocation, 'getCurrentPosition')
+        .callsFake((cb) => {
+                return cb({
+                    "coords": {
+                        "latitude": 42.052441200000004,
+                        "longitude": -87.6830102
+                    }
+                });
+        });
+        },
+    });
 })
 
 describe('Testing functionality on Restaurant page', () => {
