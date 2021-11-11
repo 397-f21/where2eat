@@ -29,7 +29,8 @@ function App() {
         navigator.geolocation.getCurrentPosition(pullData);
       }
       else {
-        setUnavailable(true);
+        // setUnavailable(true);
+        pullData({coords:{ latitude: 42.0610048, longitude: -87.682190}});
       }
     }
 
