@@ -62,7 +62,7 @@ jobs:
         env:
           SLACK_COLOR: 'good'
           SLACK_MESSAGE: 'Success'
-          SLACK_TITLE: CI Status for Branch ${{ GITHUB_REF##*/ }}
+          SLACK_TITLE: CI Status for Branch ${{ github.ref }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: Slack Notification Failure
@@ -71,7 +71,7 @@ jobs:
         env:
           SLACK_COLOR: 'danger'
           SLACK_MESSAGE: 'Failure'
-          SLACK_TITLE: CI Status for Branch ${{GITHUB_REF##*/}}
+          SLACK_TITLE: CI Status for Branch ${{ github.ref }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
       - name: Slack Notification Cancelled
@@ -80,6 +80,6 @@ jobs:
         env:
           SLACK_COLOR: 'warning'
           SLACK_MESSAGE: 'Cancelled'
-          SLACK_TITLE: CI Status for Branch ${{GITHUB_REF##*/}}
+          SLACK_TITLE: CI Status for Branch ${{ github.ref }}
           SLACK_USERNAME: ciBot
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
