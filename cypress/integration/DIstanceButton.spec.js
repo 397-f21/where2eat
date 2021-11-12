@@ -29,7 +29,7 @@ describe("Testing Filters", () => {
                             cy.get('[data-cy=distance]').invoke('text')
                                 .then(text => 
                                     { const num = parseFloat(text.replace("miles away").trim());
-                                    expect(num).to.be.at.most(0.6);
+                                    expect(num).to.be.at.most(0.5);
                                     })
                             cy.get('[data-testid="back button"]').click();
                         }
@@ -54,7 +54,7 @@ describe("Testing Filters", () => {
                                 cy.get('[data-cy=distance]').invoke('text')
                                     .then(text => 
                                         { const num = parseFloat(text.replace("miles away").trim());
-                                        expect(num).to.be.at.most(1.9);
+                                        expect(num).to.be.at.most(1);
                                         })
                                 cy.get('[data-testid="back button"]').click();
                             }
@@ -79,7 +79,7 @@ describe("Testing Filters", () => {
                                 cy.get('[data-cy=distance]').invoke('text')
                                     .then(text => 
                                         { const num = parseFloat(text.replace("miles away").trim());
-                                        expect(num).to.be.at.most(3.9);
+                                        expect(num).to.be.at.most(3);
                                         })
                                 cy.get('[data-testid="back button"]').click();
                             }

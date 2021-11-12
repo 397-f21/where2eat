@@ -40,6 +40,7 @@ function App() {
         "radius": 1609.34 * currDistance,
         "attribute": ""
       };
+      //console.log(1609.34 * currDistance);
 
       try {
 
@@ -54,14 +55,17 @@ function App() {
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
           .then(response => response.json())
           .then(data => {
+            console.log(data)
             let businesses = data.data.search.business;
             let newCategories = {};
             for (let i = 0; i < businesses.length; i++) {
               businesses[i].categories.forEach((category) => {
-                if (category.title in newCategories) {
-                  newCategories[category.title].push(businesses[i]);
-                } else {
-                  newCategories[category.title] = [businesses[i]];
+                if (businesses[i].distance <= (1609.34 * currDistance)) {
+                  if (category.title in newCategories) {
+                    newCategories[category.title].push(businesses[i]);
+                  } else {
+                    newCategories[category.title] = [businesses[i]];
+                  }
                 }
               })
             }
