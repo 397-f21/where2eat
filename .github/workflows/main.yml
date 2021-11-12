@@ -51,6 +51,8 @@ jobs:
       - run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
   slack:
     name: Slack Notification
+    if: ${{ always() }}
+    needs: [deploy]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.4.0
