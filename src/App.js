@@ -13,7 +13,6 @@ function App() {
   const [unavailable, setUnavailable] = useState(false);
   const [selected, setSelected] = useState(null);
   const [apiData, setApiData] = useState(null);
-  //const [categories, setCategories] = useState(null);
   const [filteredCategories, setFilteredCategories] = useState(null);
   const [currDistance, setCurrDistance] = useState(0.5);
 
@@ -55,7 +54,6 @@ function App() {
         fetch("https://where2eat-aqua.herokuapp.com/", requestOptions)
           .then(response => response.json())
           .then(data => {
-            console.log(data)
             let businesses = data.data.search.business;
             let newCategories = {};
             for (let i = 0; i < businesses.length; i++) {
