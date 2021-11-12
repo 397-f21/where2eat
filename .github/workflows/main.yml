@@ -25,17 +25,17 @@ jobs:
       - run: npm install
       - run: npm run build --if-present
       - run: npm test
-  cypress:
-    name: Cypress test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
-      # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
-      - uses: cypress-io/github-action@v2.9.7
-        with:
-          build: npm run build
-          start: npm start
-          wait-on: http://localhost:3000
+  # cypress:
+  #   name: Cypress test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2.4.0
+  #     # https://www.cypress.io/blog/2019/11/20/drastically-simplify-your-testing-with-cypress-github-action/
+  #     - uses: cypress-io/github-action@v2.9.7
+  #       with:
+  #         build: npm run build
+  #         start: npm start
+  #         wait-on: http://localhost:3000
   deploy:
     name: Firebase deploy
     needs: [build, cypress]
@@ -49,3 +49,11 @@ jobs:
       - run: npm run build
       - run: npm install -g firebase-tools
       - run: firebase deploy --token "${{ secrets.FIREBASE_DEPLOY_TOKEN }}" --non-interactive
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_COLOR: 'good'
+          SLACK_MESSAGE: 'Successfull Deployment'
+          SLACK_TITLE: CI Status for Branch ${GITHUB_REF##*/}
+          SLACK_USERNAME: ciBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
